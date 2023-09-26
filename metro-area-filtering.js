@@ -1,5 +1,3 @@
-console.log("metro-area-filtering.js loaded")
-
 // Populate the Metro Area dropdown using the values stored in an external CSV
 var dropdown = $("#metro-area-dropdown");
 
@@ -29,7 +27,7 @@ $.ajax({
       var filter = [{ "column": "MSA", "operand": "IN", "values": [selectedLink] }]
 
       // loop through all iframes on the page and update the src with the filter
-      $("iframe").each(function () {
+      $('iframe:not(.No-metro)').each(function () {
         if ($(this).attr("src").search("domo") != -1) {
           var src = $(this).attr("src").split("?")[0];
           var updatedSrc = src + "?pfilters=" + encodeURIComponent(JSON.stringify(filter));
