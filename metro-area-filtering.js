@@ -21,8 +21,10 @@ $.ajax({
       $(".w-dropdown").trigger("w-close");
       event.preventDefault();
 
-      // grab the selected item and create a filter object
+      // grab the selected item, update the dropdown text and create a filter object
       var selectedLink = $(this).text();
+      $("#metro-area-text").text(selectedLink);
+
       console.log("Selected : " + selectedLink);
       var filter = [{ "column": "MSA", "operand": "IN", "values": [selectedLink] }]
 
