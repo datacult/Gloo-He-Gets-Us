@@ -14,6 +14,9 @@ $.ajax({
       }
     });
 
+    // update the default title to All Metro Areas
+    $("#metro-area-text").text("All Metro Areas");
+
     // add event listener to dropdown after values have been added
     $("#metro-area-dropdown a").on("click", function (event) {
 
@@ -39,7 +42,7 @@ $.ajax({
           } else {
             updatedSrc = src
           }
-          
+
           $(this).attr("src", updatedSrc);
         }
       });
