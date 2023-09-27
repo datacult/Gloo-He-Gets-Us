@@ -36,7 +36,13 @@ $.ajax({
         if ($(this).attr("src").search("domo") != -1) {
           var src = $(this).attr("src").split("?")[0];
 
-          var updatedSrc = src + "?pfilters=" + encodeURIComponent(JSON.stringify(filter));
+          // only add the filter if the selected value is not All Metro Areas
+          if (selectedLink == 'All Metro Areas') {
+            var updatedSrc = src + "?pfilters=" + encodeURIComponent(JSON.stringify(filter));
+          } else {
+            var updatedSrc = src
+          }
+          
           $(this).attr("src", updatedSrc);
         }
       });
