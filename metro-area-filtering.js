@@ -8,6 +8,14 @@ $.ajax({
   success: function (data) {
     // handle the csv data and append each item to the dropdown list
     var valuesArray = data.split("\n");
+
+    // search for the 'All Metro Areas' value and remove it from array and add it to the start of the array
+    var index = valuesArray.indexOf("All Metro Areas");
+    if (index > -1) {
+      valuesArray.splice(index, 1);
+    }
+    valuesArray.unshift("All Metro Areas");
+
     $.each(valuesArray, function (index, value) {
       if (value.trim() !== "") {
         dropdown.append($("<a />").attr('href', '#').text(value.trim()).addClass(["dropdown-link", "body-regular", "light", "w-dropdown-link"]));
